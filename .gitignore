@@ -29,6 +29,21 @@ Release/
 # Системные файлы
 .DS_Store
 Thumbs.db
-
-#VS 
+# Visual Studio
 .vs/
+x64/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Qt
+*.qrc
+*.ui
+*.autosave
+
+# Скомпилированные файлы
+*.exe
+*.dll
+*.obj
+*.pdb
