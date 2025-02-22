@@ -29,6 +29,7 @@ Release/
 # Системные файлы
 .DS_Store
 Thumbs.db
+
 # Visual Studio
 .vs/
 x64/
@@ -40,10 +41,3 @@ x64/
 # Qt
 *.qrc
 *.ui
-*.autosave
-
-# Скомпилированные файлы
-*.exe
-*.dll
-*.obj
-*.pdb
