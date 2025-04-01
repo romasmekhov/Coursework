@@ -1,9 +1,9 @@
 #include <iostream>
-#include "ContactManager.h"
+#include "ContactManager0.h"
 
 using namespace std;
 
-// Функция отображает меню с обновлённым порядком пунктов
+// Г”ГіГ­ГЄГ¶ГЁГї Г®ГІГ®ГЎГ°Г Г¦Г ГҐГІ Г¬ГҐГ­Гѕ Г± Г®ГЎГ­Г®ГўГ«ВёГ­Г­Г»Г¬ ГЇГ®Г°ГїГ¤ГЄГ®Г¬ ГЇГіГ­ГЄГІГ®Гў
 void showMenu() {
     cout << "Phonebook:\n";
     cout << "1. Create contact\n";
@@ -20,18 +20,18 @@ void showMenu() {
 }
 
 int main() {
-    setlocale(LC_ALL, "RU"); // Устанавливаем русскую локаль
+    setlocale(LC_ALL, "RU"); // Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г°ГіГ±Г±ГЄГіГѕ Г«Г®ГЄГ Г«Гј
     ContactManager manager;
-    manager.loadFromFile("contacts.csv"); // Загружаем контакты при старте программы
+    manager.loadFromFile("contacts.csv"); // Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГЄГ®Г­ГІГ ГЄГІГ» ГЇГ°ГЁ Г±ГІГ Г°ГІГҐ ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»
 
     int choice;
     do {
-        showMenu(); // Выводим меню
+        showMenu(); // Г‚Г»ГўГ®Г¤ГЁГ¬ Г¬ГҐГ­Гѕ
         cin >> choice;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Очищаем буфер после cin
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ГЋГ·ГЁГ№Г ГҐГ¬ ГЎГіГґГҐГ° ГЇГ®Г±Г«ГҐ cin
 
         switch (choice) {
-        case 1: { // Создание контакта
+        case 1: { // Г‘Г®Г§Г¤Г Г­ГЁГҐ ГЄГ®Г­ГІГ ГЄГІГ 
             Contact contact;
             cout << "Enter first name: ";
             getline(cin, contact.firstName);
@@ -48,11 +48,11 @@ int main() {
             cout << "Enter phone numbers (separate by spaces, end with '0'): ";
 
             string phone;
-            while (cin >> phone) { // Читаем номера телефонов
+            while (cin >> phone) { // Г—ГЁГІГ ГҐГ¬ Г­Г®Г¬ГҐГ°Г  ГІГҐГ«ГҐГґГ®Г­Г®Гў
                 if (phone == "0") break;
                 contact.phoneNumbers.push_back(phone);
             }
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Очистка после ввода телефонов
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ГЋГ·ГЁГ±ГІГЄГ  ГЇГ®Г±Г«ГҐ ГўГўГ®Г¤Г  ГІГҐГ«ГҐГґГ®Г­Г®Гў
 
             if (manager.addContact(contact)) {
                 cout << "Contact added!\n";
@@ -66,7 +66,7 @@ int main() {
 
             break;
         }
-        case 2: { // Редактирование контакта
+        case 2: { // ГђГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГҐ ГЄГ®Г­ГІГ ГЄГІГ 
             string email;
             cout << "Enter email of the contact to edit: ";
             getline(cin, email);
@@ -78,7 +78,7 @@ int main() {
             }
             break;
         }
-        case 3: { // Удаление контакта
+        case 3: { // Г“Г¤Г Г«ГҐГ­ГЁГҐ ГЄГ®Г­ГІГ ГЄГІГ 
             string email;
             cout << "Enter email of the contact to delete: ";
             getline(cin, email);
@@ -88,29 +88,29 @@ int main() {
                 cout << "Contact not found.\n";
             break;
         }
-        case 4: // Сохранение в файл
+        case 4: // Г‘Г®ГµГ°Г Г­ГҐГ­ГЁГҐ Гў ГґГ Г©Г«
             manager.saveToFile("contacts.csv");
             cout << "Contacts saved.\n";
             break;
-        case 5: // Загрузка из файла
+        case 5: // Г‡Г ГЈГ°ГіГ§ГЄГ  ГЁГ§ ГґГ Г©Г«Г 
             manager.loadFromFile("contacts.csv");
             cout << "Contacts loaded.\n";
             break;
-        case 6: // Вывод списка контактов
+        case 6: // Г‚Г»ГўГ®Г¤ Г±ГЇГЁГ±ГЄГ  ГЄГ®Г­ГІГ ГЄГІГ®Гў
             manager.displayContacts();
             break;
-        case 7: // Сортировка
+        case 7: // Г‘Г®Г°ГІГЁГ°Г®ГўГЄГ 
             manager.sortContacts();
             cout << "Contacts sorted.\n";
             break;
-        case 8: { // Поиск по строке
+        case 8: { // ГЏГ®ГЁГ±ГЄ ГЇГ® Г±ГІГ°Г®ГЄГҐ
             string term;
             cout << "Enter search term: ";
             getline(cin, term);
             manager.searchContacts(term);
             break;
         }
-        case 9: { // Поиск по email
+        case 9: { // ГЏГ®ГЁГ±ГЄ ГЇГ® email
             string email;
             cout << "Enter email of the contact to find: ";
             getline(cin, email);
