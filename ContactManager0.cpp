@@ -1,20 +1,20 @@
-#include "ContactManager.h"
+#include "ContactManager0.h"
 #include <iostream>
 #include <fstream>
 #include <algorithm>
 #include <limits>  
-#include <sstream> // Для работы с stringstream
+#include <sstream> // Г„Г«Гї Г°Г ГЎГ®ГІГ» Г± stringstream
 
 using namespace std;
 
-// Функция для проверки уникальности почты
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ ГіГ­ГЁГЄГ Г«ГјГ­Г®Г±ГІГЁ ГЇГ®Г·ГІГ»
 bool ContactManager::isEmailUnique(const std::string& email) const {
     return std::none_of(contacts.begin(), contacts.end(),
         [&](const Contact& c) { return c.email == email; });
 }
 
 
-// Функция добавления контакта
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї ГЄГ®Г­ГІГ ГЄГІГ 
 bool ContactManager::addContact(const Contact& contact) {
     if (contact.validate() && isEmailUnique(contact.email)) {
         contacts.push_back(contact);
@@ -26,7 +26,7 @@ bool ContactManager::addContact(const Contact& contact) {
     }
 }
 
-// Функция удаления контакта по email
+// Г”ГіГ­ГЄГ¶ГЁГї ГіГ¤Г Г«ГҐГ­ГЁГї ГЄГ®Г­ГІГ ГЄГІГ  ГЇГ® email
 
 bool ContactManager::removeContact(const std::string& email) {
     auto it = std::find_if(contacts.begin(), contacts.end(),
@@ -39,7 +39,7 @@ bool ContactManager::removeContact(const std::string& email) {
     return false;
 }
 
-// Функция отображения всех контактов
+// Г”ГіГ­ГЄГ¶ГЁГї Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГї ГўГ±ГҐГµ ГЄГ®Г­ГІГ ГЄГІГ®Гў
 void ContactManager::displayContacts() const {
     if (contacts.empty()) {
         cout << "Contact list is empty.\n";
@@ -61,14 +61,14 @@ void ContactManager::displayContacts() const {
     }
 }
 
-// Функция сортировки контактов по фамилии
+// Г”ГіГ­ГЄГ¶ГЁГї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ ГЄГ®Г­ГІГ ГЄГІГ®Гў ГЇГ® ГґГ Г¬ГЁГ«ГЁГЁ
 void ContactManager::sortContacts() {
     sort(contacts.begin(), contacts.end(), [](const Contact& a, const Contact& b) {
         return a.lastName < b.lastName;
         });
 }
 
-// Функция поиска контактов по строке
+// Г”ГіГ­ГЄГ¶ГЁГї ГЇГ®ГЁГ±ГЄГ  ГЄГ®Г­ГІГ ГЄГІГ®Гў ГЇГ® Г±ГІГ°Г®ГЄГҐ
 void ContactManager::searchContacts(const string& term) const {
     bool found = false;
     for (const auto& contact : contacts) {
@@ -84,7 +84,7 @@ void ContactManager::searchContacts(const string& term) const {
     }
 }
 
-// Функция поиска контакта по email
+// Г”ГіГ­ГЄГ¶ГЁГї ГЇГ®ГЁГ±ГЄГ  ГЄГ®Г­ГІГ ГЄГІГ  ГЇГ® email
 Contact* ContactManager::findContact(const string& email) {
     for (auto& contact : contacts) {
         if (contact.email == email) {
@@ -94,7 +94,7 @@ Contact* ContactManager::findContact(const string& email) {
     return nullptr;
 }
 
-// Функция редактирования контакта
+// Г”ГіГ­ГЄГ¶ГЁГї Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї ГЄГ®Г­ГІГ ГЄГІГ 
 bool ContactManager::updateContact(const string& email) {
     Contact* contact = findContact(email);
     if (!contact) {
@@ -141,14 +141,14 @@ bool ContactManager::updateContact(const string& email) {
         if (phone == "0") break;
         contact->phoneNumbers.push_back(phone);
     }
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Очистка буфера
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ГЋГ·ГЁГ±ГІГЄГ  ГЎГіГґГҐГ°Г 
 
     cout << "Contact updated successfully!\n";
     return true;
 }
 
 
-// Функция сохранения контактов в файл
+// Г”ГіГ­ГЄГ¶ГЁГї Г±Г®ГµГ°Г Г­ГҐГ­ГЁГї ГЄГ®Г­ГІГ ГЄГІГ®Гў Гў ГґГ Г©Г«
 void ContactManager::saveToFile(const std::string& filename) const {
     std::ofstream file(filename);
     if (!file) {
@@ -172,7 +172,7 @@ void ContactManager::saveToFile(const std::string& filename) const {
     }
 }
 
-// Функция загрузки контактов из файла
+// Г”ГіГ­ГЄГ¶ГЁГї Г§Г ГЈГ°ГіГ§ГЄГЁ ГЄГ®Г­ГІГ ГЄГІГ®Гў ГЁГ§ ГґГ Г©Г«Г 
 void ContactManager::loadFromFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file) {
@@ -188,13 +188,13 @@ void ContactManager::loadFromFile(const std::string& filename) {
         std::stringstream ss(line);
         std::string field;
 
-        // Функция для чтения строк в кавычках
+        // Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г·ГІГҐГ­ГЁГї Г±ГІГ°Г®ГЄ Гў ГЄГ ГўГ»Г·ГЄГ Гµ
         auto readQuotedField = [](std::stringstream& ss) {
             std::string field;
             if (ss.peek() == '"') {
-                ss.get(); // Пропускаем открывающую кавычку
-                std::getline(ss, field, '"'); // Читаем до закрывающей кавычки
-                ss.ignore(); // Пропускаем запятую после кавычки
+                ss.get(); // ГЏГ°Г®ГЇГіГ±ГЄГ ГҐГ¬ Г®ГІГЄГ°Г»ГўГ ГѕГ№ГіГѕ ГЄГ ГўГ»Г·ГЄГі
+                std::getline(ss, field, '"'); // Г—ГЁГІГ ГҐГ¬ Г¤Г® Г§Г ГЄГ°Г»ГўГ ГѕГ№ГҐГ© ГЄГ ГўГ»Г·ГЄГЁ
+                ss.ignore(); // ГЏГ°Г®ГЇГіГ±ГЄГ ГҐГ¬ Г§Г ГЇГїГІГіГѕ ГЇГ®Г±Г«ГҐ ГЄГ ГўГ»Г·ГЄГЁ
             }
             else {
                 std::getline(ss, field, ',');
@@ -202,23 +202,23 @@ void ContactManager::loadFromFile(const std::string& filename) {
             return field;
             };
 
-        // Чтение полей
+        // Г—ГІГҐГ­ГЁГҐ ГЇГ®Г«ГҐГ©
         contact.firstName = readQuotedField(ss);
         contact.lastName = readQuotedField(ss);
         contact.middleName = readQuotedField(ss);
         contact.address = readQuotedField(ss);
 
-        // Дата рождения (без кавычек)
+        // Г„Г ГІГ  Г°Г®Г¦Г¤ГҐГ­ГЁГї (ГЎГҐГ§ ГЄГ ГўГ»Г·ГҐГЄ)
         std::getline(ss, contact.birthDate, ',');
 
-        // Email (без кавычек)
+        // Email (ГЎГҐГ§ ГЄГ ГўГ»Г·ГҐГЄ)
         std::getline(ss, contact.email, ',');
 
-        // Номера телефонов (оставшаяся часть строки)
+        // ГЌГ®Г¬ГҐГ°Г  ГІГҐГ«ГҐГґГ®Г­Г®Гў (Г®Г±ГІГ ГўГёГ ГїГ±Гї Г·Г Г±ГІГј Г±ГІГ°Г®ГЄГЁ)
         std::string phones;
         std::getline(ss, phones);
 
-        // Разбиваем номера телефонов
+        // ГђГ Г§ГЎГЁГўГ ГҐГ¬ Г­Г®Г¬ГҐГ°Г  ГІГҐГ«ГҐГґГ®Г­Г®Гў
         std::stringstream phoneStream(phones);
         std::string phone;
         contact.phoneNumbers.clear();
@@ -226,7 +226,7 @@ void ContactManager::loadFromFile(const std::string& filename) {
             contact.phoneNumbers.push_back(phone);
         }
 
-        // Проверяем валидность перед добавлением
+        // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ ГўГ Г«ГЁГ¤Г­Г®Г±ГІГј ГЇГҐГ°ГҐГ¤ Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐГ¬
         if (contact.validate()) {
             contacts.push_back(contact);
         }
