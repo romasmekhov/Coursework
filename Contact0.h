@@ -1,5 +1,5 @@
-#ifndef CONTACT_H
-#define CONTACT_H
+#ifndef CONTACT0_H
+#define CONTACT0_H
 
 #include <string>
 #include <vector>
