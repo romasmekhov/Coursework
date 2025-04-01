@@ -1,23 +1,23 @@
-#include "Contact.h"
+#include "Contact0.h"
 #include <regex>
 #include <ctime>
 #include <algorithm>
 
-// Отключаем предупреждение для localtime
+// ГЋГІГЄГ«ГѕГ·Г ГҐГ¬ ГЇГ°ГҐГ¤ГіГЇГ°ГҐГ¦Г¤ГҐГ­ГЁГҐ Г¤Г«Гї localtime
 #pragma warning(disable : 4996)
 
 bool Contact::validateName(const std::string& name) {
-    // Удаление пробелов по краям
+    // Г“Г¤Г Г«ГҐГ­ГЁГҐ ГЇГ°Г®ГЎГҐГ«Г®Гў ГЇГ® ГЄГ°Г ГїГ¬
     std::string trimmed = name;
     trimmed.erase(trimmed.find_last_not_of(" \t\n\r") + 1);
     trimmed.erase(0, trimmed.find_first_not_of(" \t\n\r"));
 
-    const std::regex pattern(R"(^[A-Za-zА-Яа-яЁё][A-Za-zА-Яа-яЁё0-9\s-]*[A-Za-zА-Яа-яЁё0-9]$)");
+    const std::regex pattern(R"(^[A-Za-zГЂ-ГџГ -ГїВЁВё][A-Za-zГЂ-ГџГ -ГїВЁВё0-9\s-]*[A-Za-zГЂ-ГџГ -ГїВЁВё0-9]$)");
     return !trimmed.empty() && std::regex_match(trimmed, pattern);
 }
 
 bool Contact::validateEmail(const std::string& email) {
-    // Удаление всех пробелов
+    // Г“Г¤Г Г«ГҐГ­ГЁГҐ ГўГ±ГҐГµ ГЇГ°Г®ГЎГҐГ«Г®Гў
     std::string trimmed = email;
     trimmed.erase(std::remove(trimmed.begin(), trimmed.end(), ' '), trimmed.end());
 
@@ -39,14 +39,14 @@ bool Contact::validateBirthDate(const std::string& date) {
     int month = std::stoi(match[2]);
     int year = std::stoi(match[3]);
 
-    // Проверка на будущую дату
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЎГіГ¤ГіГ№ГіГѕ Г¤Г ГІГі
     std::time_t t = std::time(nullptr);
     std::tm* now = std::localtime(&t);
     if (year > (now->tm_year + 1900)) return false;
     if (year == (now->tm_year + 1900) && month > (now->tm_mon + 1)) return false;
     if (year == (now->tm_year + 1900) && month == (now->tm_mon + 1) && day > now->tm_mday) return false;
 
-    // Проверка дней в месяце
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  Г¤Г­ГҐГ© Гў Г¬ГҐГ±ГїГ¶ГҐ
     static const int daysInMonth[] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
     int maxDays = daysInMonth[month - 1];
     bool isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
