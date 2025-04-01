@@ -1,7 +1,7 @@
-#ifndef CONTACT_MANAGER_H
-#define CONTACT_MANAGER_H
+#ifndef CONTACT_MANAGER0_H
+#define CONTACT_MANAGER0_H
 
-#include "Contact.h"
+#include "Contact0.h"
 #include <vector>
 
 class ContactManager {
