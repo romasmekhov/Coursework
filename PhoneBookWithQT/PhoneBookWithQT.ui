@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui version="4.0">
+	<class>PhoneBookWithQTClass</class>
+	<widget class="QMainWindow" name="PhoneBookWithQT">
+		<property name="geometry">
+			<rect>
+				<x>0</x>
+				<y>0</y>
+				<width>875</width>
+				<height>565</height>
+			</rect>
+		</property>
+		<property name="windowTitle">
+			<string>PhoneBookWithQT</string>
+		</property>
+		<widget class="QWidget" name="centralWidget">
+			<widget class="QWidget" name="gridLayoutWidget">
+				<property name="geometry">
+					<rect>
+						<x>0</x>
+						<y>20</y>
+						<width>871</width>
+						<height>251</height>
+					</rect>
+				</property>
+				<layout class="QGridLayout" name="gridLayout">
+					<item row="1" column="0">
+						<widget class="QTableWidget" name="contactsTable">
+							<property name="columnCount">
+								<number>7</number>
+							</property>
+							<column>
+								<property name="text">
+									<string>Фамилия</string>
+								</property>
+							</column>
+							<column>
+								<property name="text">
+									<string>Имя</string>
+								</property>
+							</column>
+							<column>
+								<property name="text">
+									<string>Отчество</string>
+								</property>
+							</column>
+							<column>
+								<property name="text">
+									<string>Адрес</string>
+								</property>
+							</column>
+							<column>
+								<property name="text">
+									<string>Дата Рождения</string>
+								</property>
+							</column>
+							<column>
+								<property name="text">
+									<string>Почта</string>
+								</property>
+							</column>
+							<column>
+								<property name="text">
+									<string>Телефон</string>
+								</property>
+							</column>
+						</widget>
+					</item>
+				</layout>
+			</widget>
+			<widget class="QWidget" name="horizontalLayoutWidget">
+				<property name="geometry">
+					<rect>
+						<x>20</x>
+						<y>300</y>
+						<width>801</width>
+						<height>80</height>
+					</rect>
+				</property>
+				<layout class="QHBoxLayout" name="horizontalLayout">
+					<item>
+						<widget class="QGroupBox" name="groupBox">
+							<property name="title">
+								<string>Commands</string>
+							</property>
+							<widget class="QPushButton" name="addButton">
+								<property name="geometry">
+									<rect>
+										<x>20</x>
+										<y>40</y>
+										<width>80</width>
+										<height>25</height>
+									</rect>
+								</property>
+								<property name="text">
+									<string>Add Contact</string>
+								</property>
+							</widget>
+							<widget class="QPushButton" name="editButton">
+								<property name="geometry">
+									<rect>
+										<x>110</x>
+										<y>40</y>
+										<width>80</width>
+										<height>25</height>
+									</rect>
+								</property>
+								<property name="text">
+									<string>Edit Contact</string>
+								</property>
+							</widget>
+							<widget class="QPushButton" name="deleteButton">
+								<property name="geometry">
+									<rect>
+										<x>200</x>
+										<y>40</y>
+										<width>101</width>
+										<height>25</height>
+									</rect>
+								</property>
+								<property name="text">
+									<string>Delete Contact</string>
+								</property>
+							</widget>
+							<widget class="QPushButton" name="searchButton">
+								<property name="geometry">
+									<rect>
+										<x>310</x>
+										<y>40</y>
+										<width>80</width>
+										<height>25</height>
+									</rect>
+								</property>
+								<property name="text">
+									<string>Search</string>
+								</property>
+							</widget>
+							<widget class="QPushButton" name="sortButton">
+								<property name="geometry">
+									<rect>
+										<x>400</x>
+										<y>40</y>
+										<width>80</width>
+										<height>25</height>
+									</rect>
+								</property>
+								<property name="text">
+									<string>Sort</string>
+								</property>
+							</widget>
+							<widget class="QPushButton" name="saveButton">
+								<property name="geometry">
+									<rect>
+										<x>490</x>
+										<y>40</y>
+										<width>80</width>
+										<height>25</height>
+									</rect>
+								</property>
+								<property name="text">
+									<string>Save to file</string>
+								</property>
+							</widget>
+							<widget class="QPushButton" name="loadButton">
+								<property name="geometry">
+									<rect>
+										<x>580</x>
+										<y>40</y>
+										<width>101</width>
+										<height>25</height>
+									</rect>
+								</property>
+								<property name="text">
+									<string>Load from file</string>
+								</property>
+							</widget>
+						</widget>
+					</item>
+				</layout>
+			</widget>
+		</widget>
+		<widget class="QMenuBar" name="menuBar">
+			<property name="geometry">
+				<rect>
+					<x>0</x>
+					<y>0</y>
+					<width>875</width>
+					<height>25</height>
+				</rect>
+			</property>
+		</widget>
+		<widget class="QToolBar" name="mainToolBar">
+			<attribute name="toolBarArea">
+				<enum>TopToolBarArea</enum>
+			</attribute>
+			<attribute name="toolBarBreak">
+				<bool>false</bool>
+			</attribute>
+		</widget>
+		<widget class="QStatusBar" name="statusBar"/>
+	</widget>
+	<layoutdefault spacing="6" margin="11"/>
+	<resources>
+		<include location="PhoneBookWithQT.qrc"/>
+	</resources>
+	<connections/>
+</ui>
