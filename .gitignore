@@ -1,0 +1,43 @@
+# Файлы сборки и временные файлы
+build-*/
+*.pro.user
+*.autosave
+
+# Скомпилированные бинарники
+*.exe
+*.dll
+*.so
+*.a
+
+# Qt Creator
+*.pro.user*
+*.pro.user.*
+
+# Директории
+Debug/
+Release/
+*.obj
+*.o
+*.d
+*.ilk
+*.pdb
+
+# Резервные копии
+*~
+*.bak
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Visual Studio
+.vs/
+x64/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Qt
+*.qrc
+*.ui
